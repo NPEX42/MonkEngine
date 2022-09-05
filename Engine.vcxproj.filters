@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="impl">
+      <UniqueIdentifier>{D781987C-C3B8-990D-6CA5-7F1058BB150F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="impl\Sound">
+      <UniqueIdentifier>{CF8C1DC1-BB44-5F0E-244C-386A1023FAFE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="impl\graphics">
+      <UniqueIdentifier>{17E8C782-83A8-43B9-4CE3-8C36B8628895}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="impl\maths">
+      <UniqueIdentifier>{A357ECC2-8F0F-2E10-F816-076CE4EDC800}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="intf">
+      <UniqueIdentifier>{9686987C-82BD-990D-2BAA-7F1017C0150F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="intf\Sound">
+      <UniqueIdentifier>{CEE4C318-BA9C-0566-23A4-DEC10F7BA056}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="intf\graphics">
+      <UniqueIdentifier>{B6B3EEB0-2274-6AE7-EBAE-B364572EAFC3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="intf\maths">
+      <UniqueIdentifier>{A2AF921A-8E67-D467-F76E-ADC3E3456F58}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Engine\src\intf\Engine.h">
+      <Filter>intf</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\src\intf\Logger.h">
+      <Filter>intf</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\src\intf\Sound\AudioBuffer.h">
+      <Filter>intf\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\src\intf\Sound\Device.h">
+      <Filter>intf\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\src\intf\Sound\Sound.h">
+      <Filter>intf\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\src\intf\Window.h">
+      <Filter>intf</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\src\intf\graphics\Renderer2D.h">
+      <Filter>intf\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\src\intf\gui.h">
+      <Filter>intf</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\src\intf\maths\Vertex.h">
+      <Filter>intf\maths</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Engine\src\impl\Engine.cpp">
+      <Filter>impl</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\src\impl\Sound\AudioBuffer.cpp">
+      <Filter>impl\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\src\impl\Sound\Device.cpp">
+      <Filter>impl\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\src\impl\Sound\Sound.cpp">
+      <Filter>impl\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\src\impl\Window.cpp">
+      <Filter>impl</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\src\impl\graphics\Renderer2D.cpp">
+      <Filter>impl\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\src\impl\gui.cpp">
+      <Filter>impl</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\src\impl\maths\Vertex.cpp">
+      <Filter>impl\maths</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\src\impl\tinyfiledialogs.c">
+      <Filter>impl</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

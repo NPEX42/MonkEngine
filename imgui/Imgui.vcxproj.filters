@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="impl">
+      <UniqueIdentifier>{D781987C-C3B8-990D-6CA5-7F1058BB150F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="impl\custom">
+      <UniqueIdentifier>{61468D0A-CDFB-0500-56F0-FFD6C2A4FC03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="intf">
+      <UniqueIdentifier>{9686987C-82BD-990D-2BAA-7F1017C0150F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="intf\custom">
+      <UniqueIdentifier>{409EFE56-AC53-774C-3548-7123A1FC6D50}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\intf\custom\Viewport.h">
+      <Filter>intf\custom</Filter>
+    </ClInclude>
+    <ClInclude Include="src\intf\imconfig.h">
+      <Filter>intf</Filter>
+    </ClInclude>
+    <ClInclude Include="src\intf\imgui.h">
+      <Filter>intf</Filter>
+    </ClInclude>
+    <ClInclude Include="src\intf\imgui_impl_glfw.h">
+      <Filter>intf</Filter>
+    </ClInclude>
+    <ClInclude Include="src\intf\imgui_impl_opengl3.h">
+      <Filter>intf</Filter>
+    </ClInclude>
+    <ClInclude Include="src\intf\imgui_impl_opengl3_loader.h">
+      <Filter>intf</Filter>
+    </ClInclude>
+    <ClInclude Include="src\intf\imgui_internal.h">
+      <Filter>intf</Filter>
+    </ClInclude>
+    <ClInclude Include="src\intf\imstb_rectpack.h">
+      <Filter>intf</Filter>
+    </ClInclude>
+    <ClInclude Include="src\intf\imstb_textedit.h">
+      <Filter>intf</Filter>
+    </ClInclude>
+    <ClInclude Include="src\intf\imstb_truetype.h">
+      <Filter>intf</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\impl\custom\Viewport.cpp">
+      <Filter>impl\custom</Filter>
+    </ClCompile>
+    <ClCompile Include="src\impl\imgui.cpp">
+      <Filter>impl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\impl\imgui_demo.cpp">
+      <Filter>impl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\impl\imgui_draw.cpp">
+      <Filter>impl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\impl\imgui_impl_glfw.cpp">
+      <Filter>impl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\impl\imgui_impl_opengl3.cpp">
+      <Filter>impl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\impl\imgui_tables.cpp">
+      <Filter>impl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\impl\imgui_widgets.cpp">
+      <Filter>impl</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
