@@ -35,7 +35,9 @@ int main() {
 
 
 	ImGui::GetIO().ConfigFlags |= ImGuiConfigFlags_DockingEnable;
-	
+
+	ImGui::LoadIniSettingsFromDisk("res/imgui.ini");
+
 	Bus bus;
 
 	Texture2D screen;
@@ -53,7 +55,7 @@ int main() {
 
 
 	
-	bus.LoadRom(0xE000, "rom.bin");
+	bus.LoadRom(0xE000, "res/rom.bin");
 
 	
 
@@ -73,7 +75,7 @@ int main() {
 	
 	int loadPoint = 0x0000;
 
-	ImFont* editFont = ImGui::GetIO().Fonts->AddFontFromFileTTF("ProggyClean.ttf", 16);
+	ImFont* editFont = ImGui::GetIO().Fonts->AddFontFromFileTTF("res/ProggyClean.ttf", 16);
 
 	static const char* instructions[] = {
 		"LDA", "LDX", "LDY",
@@ -81,11 +83,12 @@ int main() {
 
 		"ASL", "ASR", "NOP", "BRK", 
 		"TXA", "TXY", "TAY", "TAX",
-		"TYX", "TYA"
+		"TYX", "TYA", ".alias",
+		".macro", ".data", ".text"
 	};
 
 	static const char* keywords[] = {
-		"$[0-A]+", "[", "]", "#", ""
+		"$", "[", "]", "#"
 	};
 
 
@@ -107,6 +110,9 @@ int main() {
 
 
 	editor.SetPalette(pallete);
+
+	ImGuiFileDialog openDialog;
+	ImGuiFileDialog saveDialog;
 
 	std::map<uint16_t, std::string> disasm = bus.cpu.disassemble((bus.cpu.pc) - 8, (bus.cpu.pc) + 8);
 	while(window.update()) {
@@ -206,31 +212,42 @@ int main() {
 		}
 
 		ImGui::End();
-		ImGui::Begin("Screen");
+		ImGui::Begin("Editor");
 
 		if (ImGui::Button("Assemble")) {
-			std::ofstream stream("temp.s");
+			std::ofstream stream("res/temp.s");
 			stream << editor.GetText();
 			stream.close();
 			char command[512];
-			snprintf(command, 512, "ophis.exe -o temp.bin temp.s");
+			snprintf(command, 512, "ophis.exe -o res/temp.bin res/temp.s");
 			system(command);
-			bus.LoadRom(loadPoint, "temp.bin");
+			bus.LoadRom(loadPoint, "res/temp.bin");
 			bus.cpu.reset();
+
+			update_disasm = true;
 		}
+
+		ImGui::SameLine();
 		if (ImGui::Button("Open")) {
-			ImGuiFileDialog::Instance()->OpenDialog("ChooseFileDlgKey", "Choose File", ".s,.asm", ".");
+			openDialog.OpenDialog("OpenDialog", "Open File", ".s,.asm", ".");
 			
 		}
 
+		ImGui::SameLine();
+
+		if (ImGui::Button("Save")) {
+			saveDialog.OpenDialog("SaveDialog", "Save File", ".s", ".");
+
+		}
+
 		// display
-		if (ImGuiFileDialog::Instance()->Display("ChooseFileDlgKey"))
+		if (openDialog.Display("OpenDialog"))
 		{
 			// action if OK
-			if (ImGuiFileDialog::Instance()->IsOk())
+			if (openDialog.IsOk())
 			{
-				std::string filePathName = ImGuiFileDialog::Instance()->GetFilePathName();
-				std::string filePath = ImGuiFileDialog::Instance()->GetCurrentPath();
+				std::string filePathName = openDialog.GetFilePathName();
+				std::string filePath = openDialog.GetCurrentPath();
 				printf("%s - %s \n", filePath.c_str(), filePathName.c_str());
 
 				editor.SetText("");
@@ -242,9 +259,28 @@ int main() {
 
 			}
 			// close
-			ImGuiFileDialog::Instance()->Close();
+			openDialog.Close();
 
 		}
+
+		// display
+		if (saveDialog.Display("SaveDialog"))
+		{
+			// action if OK
+			if (saveDialog.IsOk())
+			{
+				std::string filePathName = saveDialog.GetFilePathName();
+				std::string filePath = saveDialog.GetCurrentPath();
+				printf("%s - %s \n", filePath.c_str(), filePathName.c_str());
+				std::ofstream file(filePathName);
+				file << editor.GetText();
+
+			}
+			// close
+			saveDialog.Close();
+
+		}
+
 
 		ImGui::InputInt("Load Offset", &loadPoint, 1, 16);
 
@@ -299,7 +335,7 @@ int main() {
 
 	}
 
-	ImGui::SaveIniSettingsToDisk("imgui.ini");
+	ImGui::SaveIniSettingsToDisk("res/imgui.ini");
 
 	nutmeg::Cleanup();
 
